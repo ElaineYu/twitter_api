@@ -1,0 +1,5 @@
+<!-- got rid of container tags <div>s -->
+<!-- this now goes on our homepage index.erb -->
+<% @tweets.each do |tweet| %>
+<%= tweet.tweet %><br/><br/>
+<% end %>

@@ -1,0 +1,23 @@
+Add helpers here as *.rb files, e.g.,
+
+app/helpers/formatting.rb
+
+helpers do
+  def em(text)
+    "<em>#{text}</em>"
+  end
+end
+
+def create_consumer
+  OAuth::Consumer.new(
+    ENV['CONSUMER_KEY'], ENV['CONSUMER_SECRET'],
+    :site => "https://api.twitter.com")
+end
+
+def request_token
+  host = request.host
+  host << ":9292" if request.host == "localhost"
+  session[:request_token] ||=
+    create_consumer.get_request_token(
+    :oauth_callback => "http://#{host}/auth")
+end
