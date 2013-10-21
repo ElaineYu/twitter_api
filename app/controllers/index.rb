@@ -8,6 +8,7 @@ end
 get '/:username' do
   @user = TwitterUser.find_or_create_by(username: params[:username])
 
+      p "ARE THEY STALE? #{@user.tweets_stale?}" 
   
     if @user.tweets.empty? || @user.tweets_stale?
       

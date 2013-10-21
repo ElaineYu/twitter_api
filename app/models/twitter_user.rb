@@ -11,12 +11,12 @@ class TwitterUser < ActiveRecord::Base
   end
 
   def tweets_stale?
-    self.tweets.each do |x|
-      time_lapse = (Time.now - x.tweeted_at) / (3600 * 24) 
-      if time_lapse > 7
-        true
-      end
-    end
+
+      time_lapse = (Time.now - self.tweets.first.tweeted_at) / (3600 * 24) 
+      
+      time_lapse > 7
+
+     
 
   end
 

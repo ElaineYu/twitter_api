@@ -12,6 +12,8 @@ $(document).ready(function() {
         $('.response').html(response);
     }
 
+    $('.response').html("WHOOOO");
+
 
     // function(response) == what's returned from page
     $.get(url, response)
